@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace Techlonoshe20173CCuentas
 {
-    public class Cuenta
+    /// <summary>
+    /// Clase abstracta.
+    /// No se instancia directamente.
+    /// </summary>
+    public abstract class Cuenta
     {
         public long Numero {get; set;}
         public decimal Saldo {get; set;}
@@ -39,7 +43,7 @@ namespace Techlonoshe20173CCuentas
         /// </summary>
         /// <param name="cantidad"></param>
         /// <returns>True si la operación es correcta, False si no.</returns>
-        public bool RetirarDinero(decimal cantidad)        
+        public virtual bool RetirarDinero(decimal cantidad)        
         {
             if(Saldo >= cantidad)
             {

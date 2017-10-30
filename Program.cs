@@ -23,13 +23,13 @@ namespace Techlonoshe20173CCuentas
             rick.FechaDeNacimiento = new DateTime(1960, 5, 1);
 
             //creamos cuenta
-            Cuenta cuenta1 = new Cuenta();
+            CuentaCorriente cuenta1 = new CuentaCorriente();
             cuenta1.Numero = 231231;            
             //le damos la cuenta a morty
             cuenta1.Titulares.Add(morty);
             cuenta1.Titulares.Add(rick);
             
-            Cuenta cuenta2 = new Cuenta(348438);
+            CajaDeAhorro cuenta2 = new CajaDeAhorro(348438);
             cuenta2.Titulares.Add(morty);
 
             if(cuenta1.DepositarDinero(400))
