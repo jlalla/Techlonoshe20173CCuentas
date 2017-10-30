@@ -10,6 +10,8 @@ namespace Techlonoshe20173CCuentas
 
         public List<Persona> Titulares {get; set;}
 
+        public List<Operacion> Operaciones {get;set;}
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -17,6 +19,7 @@ namespace Techlonoshe20173CCuentas
         {
             this.Saldo = 0;
             this.Titulares = new List<Persona>();
+            this.Operaciones = new List<Operacion>();
         }
 
         /// <summary>
@@ -28,6 +31,7 @@ namespace Techlonoshe20173CCuentas
             this.Numero = numero;
             this.Saldo = 0;
             this.Titulares = new List<Persona>();
+            this.Operaciones = new List<Operacion>();
         }
 
         /// <summary>
@@ -40,6 +44,9 @@ namespace Techlonoshe20173CCuentas
             if(Saldo >= cantidad)
             {
                 this.Saldo -= cantidad; // this.Saldo = this.Saldo - cantidad;
+                this.Operaciones.Add(new Operacion { Monto = -1 * cantidad,
+                                            Fecha = DateTime.Now,
+                                            Tipo = "Extracción"});
                 return true;
             }
             return false;
@@ -48,8 +55,21 @@ namespace Techlonoshe20173CCuentas
         public bool DepositarDinero(decimal cantidad)
         {
             this.Saldo += cantidad;
+            this.Operaciones.Add(new Operacion { Monto = cantidad,
+                                            Fecha = DateTime.Now,
+                                            Tipo = "Depósito"});
             return true;
         }
         
+        public void MostrarOperacionesRealizadas()
+        {
+            foreach(Operacion operación in this.Operaciones)
+            {
+                Console.WriteLine(string.Format("{0} {1}: {2}", 
+                                            operación.Fecha.ToString("yyyy/MM/dd HH:mm:ss"),
+                                            operación.Tipo,
+                                            operación.Monto.ToString("C2")));
+            }
+        }
     }
 }

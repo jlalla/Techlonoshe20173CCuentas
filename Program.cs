@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Techlonoshe20173CCuentas
 {
@@ -35,6 +36,7 @@ namespace Techlonoshe20173CCuentas
             {
                 Console.WriteLine("Operación OK");
             }
+            //Thread.Sleep(2000); //duerme el proceso por 2 segundos
             if(cuenta1.RetirarDinero(200))
             {
                 Console.WriteLine("Operación OK");
@@ -49,6 +51,8 @@ namespace Techlonoshe20173CCuentas
             {
                 Console.WriteLine("La cuenta1 tiene el titular: " + titular.NombreCompleto());
             }
+            cuenta1.MostrarOperacionesRealizadas();
+            Console.ReadKey();
 
         }
     }
