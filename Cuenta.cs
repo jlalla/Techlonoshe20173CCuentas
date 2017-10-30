@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Techlonoshe20173CCuentas
 {
@@ -7,7 +8,27 @@ namespace Techlonoshe20173CCuentas
         public long Numero {get; set;}
         public decimal Saldo {get; set;}
 
-        public Persona Titular {get; set;}
+        public List<Persona> Titulares {get; set;}
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Cuenta()
+        {
+            this.Saldo = 0;
+            this.Titulares = new List<Persona>();
+        }
+
+        /// <summary>
+        /// Constructor que recibe parámetro
+        /// </summary>
+        /// <param name="numero">Numero de Cuenta</param>
+        public Cuenta(long numero)
+        {
+            this.Numero = numero;
+            this.Saldo = 0;
+            this.Titulares = new List<Persona>();
+        }
 
         /// <summary>
         /// Se retira dinero de la cuenta.
